@@ -75,10 +75,13 @@ def counting_bulls(count_b): #функция, корректирующая вы�
 def steps_game(estimated_number, true_number): #функция подсчёта "коров" и "быков"
     bulls_count = 0
     cows_count = 0
+    check_string = true_number
     for index, element in enumerate(estimated_number):
         if true_number[index] == element:
             bulls_count += 1
-        elif element in true_number:
+            check_string = check_string[:index] + '-' + check_string[index+1:]
+    for index, element in enumerate(estimated_number):
+        if element in check_string:
             cows_count += 1
     print(f"В твоём числе {estimated_number} {bulls_count} {counting_bulls(bulls_count)} и {cows_count} {counting_cows(cows_count)}")
 start_program() #вызов стартовой функции
